@@ -1,24 +1,31 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from app.config import Config
-from flask import Blueprint
+from app.config import Config, LoggingConfig, Logger
+from logging.handlers import RotatingFileHandler
+import logging
 
-db = SQLAlchemy()
+app = Flask(__name__)
+logging.basicConfig(level=LoggingConfig.LOGGING_LEVEL)
+# 10 MB with 5 backup files
+handler = RotatingFileHandler(LoggingConfig.LOGGING_LOCATION,
+                                            maxBytes=10*1024*1024,
+                                            backupCount=5)
+handler.setLevel(LoggingConfig.LOGGING_LEVEL)
+formatter = logging.Formatter(LoggingConfig.LOGGING_FORMAT)
+handler.setFormatter(formatter)
+app.logger.addHandler(handler)
+app.config.from_object(Config)
+db = SQLAlchemy(app)
+Logger = app.logger
+from app.models.customers import Customer
 
-v1 = Blueprint("v1", __name__)
+# Register API Endpoints
+from app.controllers.identify_controllers import base_path_blueprint
+app.register_blueprint(base_path_blueprint)
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object(Config)
 
-    db.init_app(app)
+with app.app_context():
+    db.create_all()
+    db.session.commit()
 
-    with app.app_context():
 
-        # Register Models
-        from app.models.customers import Customer
-        db.create_all()
-
-        # API Versioning
-        app.register_blueprint(v1, url_prefix="/v1")
-    return app
