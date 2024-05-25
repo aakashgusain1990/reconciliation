@@ -8,7 +8,7 @@ load_dotenv()
 class Config:
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    Logger = None
+    LOGGER = None
 
 class Routes:
     BASEPATH = '/v1'
@@ -22,5 +22,5 @@ class ResponseMessages:
 
 class LoggingConfig:
     LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    LOGGING_LOCATION = 'cicddashboard.log'
+    LOGGING_LOCATION = 'reconcialation.log'
     LOGGING_LEVEL = logging.DEBUG

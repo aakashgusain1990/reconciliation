@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from app.config import Config, LoggingConfig, Logger
+from app.config import Config, LoggingConfig
 from logging.handlers import RotatingFileHandler
 import logging
 
@@ -16,7 +16,7 @@ handler.setFormatter(formatter)
 app.logger.addHandler(handler)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
-Logger = app.logger
+Config.LOGGER = app.logger
 from app.models.customers import Customer
 
 # Register API Endpoints

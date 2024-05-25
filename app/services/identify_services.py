@@ -1,6 +1,9 @@
 from app.dto.customer_dtos import CustomerDto
 from app.repositories.customer_repositories import CustomerRepository
 
+"""
+IdentifyServices contains the business logic to reconcile customer.
+"""
 class IdentifyService:
     customer_repository: CustomerRepository = CustomerRepository()
 
@@ -49,6 +52,7 @@ class IdentifyService:
                 }
             }
         return resp
+    
     
     @classmethod
     def check_if_exists(cls, email, phone_number):
