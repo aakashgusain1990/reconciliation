@@ -13,3 +13,17 @@ pip install -r requirements.txt
 python3 run.py
 ```
 Flask server will be up and running at http://127.0.0.1:5000/.
+
+## Build and publish
+1. Make and commit changes to main branch.
+2. Github workflow will auto build and publish the image to docker hub.
+
+## API Endpoint for Prod Server
+API Endpoint: https://reconciliation-latest.onrender.com/v1/identify
+Request Body:
+```sh
+{
+"email":"george@hillvalley.edu",
+"phoneNumber": "717171"
+}
+```
