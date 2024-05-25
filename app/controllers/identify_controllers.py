@@ -15,11 +15,11 @@ def purchase():
                 email=request.json["email"] if "email" in request.json else None,
                 phone_number=request.json["phoneNumber"] if "phoneNumber" in request.json else None,
             ) 
-        Config.Logger.info("Request to add customer: {0}".format(request_body))
+        Config.LOGGER.info("Request to add customer: {0}".format(request_body))
         
         #Validate request body
         if not request_body.email and not request_body.phone_number:
-            Config.Logger.error("Missing mandatory fields: email, phone number")
+            Config.LOGGER.error("Missing mandatory fields: email, phone number")
             return make_response(jsonify(ResponseMessages.BAD_REQUEST), 400)
         
         customer_details = IdentifyService.add_customer(request_body)

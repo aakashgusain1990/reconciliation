@@ -22,7 +22,6 @@ class CustomerRepository:
         return query_email.union(query_phone).all()
     
     def update_customer(self, existing_customer):
-        print(existing_customer[0])
         for i in range(1, len(existing_customer)):
             existing_customer[i].link_type = 'secondary'
             existing_customer[i].link_id = existing_customer[0].id
