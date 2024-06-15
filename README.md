@@ -19,7 +19,7 @@ Flask server will be up and running at http://127.0.0.1:5000/.
 2. Github workflow will auto build and publish the image to docker hub.
 
 ## API Endpoint for Prod Server
-API Endpoint: https://reconciliation.onrender.com/v1/identify.
+API Endpoint: https://reconciliation.onrender.com/identify.
 
 Request Body:
 ```sh
