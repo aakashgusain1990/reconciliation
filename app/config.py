@@ -11,7 +11,7 @@ class Config:
     LOGGER = None
 
 class Routes:
-    BASEPATH = '/v1'
+    BASEPATH = ''
     IDENTIFYPATH = '/identify'
 
 class ResponseMessages:
