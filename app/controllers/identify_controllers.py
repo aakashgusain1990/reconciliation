@@ -7,7 +7,7 @@ from app.services.identify_services import IdentifyService
 base_path_blueprint = Blueprint(
     Routes.BASEPATH, __name__, url_prefix=Routes.BASEPATH)
 
-@base_path_blueprint.route("/identify", methods=['POST'])
+@base_path_blueprint.route("", methods=['POST'])
 def purchase():
     try:
         #Retrieve request body

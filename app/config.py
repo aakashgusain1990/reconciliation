@@ -11,8 +11,7 @@ class Config:
     LOGGER = None
 
 class Routes:
-    BASEPATH = ''
-    IDENTIFYPATH = '/identify'
+    BASEPATH = '/identify'
 
 class ResponseMessages:
     SUCCESS = {"message":"Success", "status_code":200}
